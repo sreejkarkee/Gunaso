@@ -1,0 +1,36 @@
+{
+  "name": "gunaso",
+  "version": "1.0.0",
+  "description": "A MERN e-governance grievance portal. Citizens file complaints with photos and map location; AI auto-categorizes urgency and routes them to the right department; officers get live updates via Socket.IO. Includes duplicate detection, hotspot maps, and a status audit trail.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sreejkarkee/Gunaso.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sreejkarkee/Gunaso/issues"
+  },
+  "homepage": "https://github.com/sreejkarkee/Gunaso#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.4",
+    "morgan": "^1.12.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

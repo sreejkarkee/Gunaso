@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Secrets (never commit these)
+.env
+.env.*
+!.env.example
+
+# Uploaded complaint photos (keep the folder, ignore the files)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Build output
+client/dist/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
