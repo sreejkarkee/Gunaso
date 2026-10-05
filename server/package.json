@@ -4,7 +4,9 @@
   "description": "A MERN e-governance grievance portal. Citizens file complaints with photos and map location; AI auto-categorizes urgency and routes them to the right department; officers get live updates via Socket.IO. Includes duplicate detection, hotspot maps, and a status audit trail.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/sreejkarkee/Gunaso/issues"
   },
