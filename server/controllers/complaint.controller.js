@@ -7,7 +7,7 @@ import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const categories = ["road", "water", "electricity", "sanitation", "health", "corruption", "other"];
-const statuses = ["submitted", "assigned", "in_progress", "resolved", "rejected", "escalated"];
+const statuses = ["submitted", "received", "assigned", "in_progress", "resolved", "rejected", "escalated"];
 const createSchema = z.object({
   title: z.string().trim().min(5).max(120),
   description: z.string().trim().min(10).max(5000),
@@ -22,6 +22,9 @@ const createSchema = z.object({
 const statusSchema = z.object({
   status: z.enum(statuses),
   remark: z.string().trim().max(500).optional(),
+});
+const responseSchema = z.object({
+  message: z.string().trim().min(2).max(2000),
 });
 
 const ticketId = () => `GNS-${new Date().getFullYear()}-${crypto.randomBytes(4).toString("hex").toUpperCase()}`;
@@ -77,5 +80,19 @@ export const updateStatus = asyncHandler(async (req, res) => {
   if (status === "assigned" && !complaint.assignedTo) complaint.assignedTo = req.user._id;
   await complaint.save();
   await StatusHistory.create({ complaint: complaint._id, from, to: status, changedBy: req.user._id, remark });
+  res.json({ complaint });
+});
+
+export const addOfficialResponse = asyncHandler(async (req, res) => {
+  const { message } = responseSchema.parse(req.body);
+  const complaint = await Complaint.findById(req.params.id);
+  if (!complaint) throw new ApiError(404, "Complaint not found");
+
+  complaint.officialResponse = {
+    message,
+    respondedBy: req.user._id,
+    respondedAt: new Date(),
+  };
+  await complaint.save();
   res.json({ complaint });
 });

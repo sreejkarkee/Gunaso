@@ -13,7 +13,7 @@ const complaintSchema = new mongoose.Schema(
     urgency: { type: String, enum: ["low", "medium", "high", "critical"], default: "medium" },
     status: {
       type: String,
-      enum: ["submitted", "assigned", "in_progress", "resolved", "rejected", "escalated"],
+      enum: ["submitted", "received", "assigned", "in_progress", "resolved", "rejected", "escalated"],
       default: "submitted",
     },
     location: {
@@ -25,6 +25,11 @@ const complaintSchema = new mongoose.Schema(
     citizen: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     department: { type: mongoose.Schema.Types.ObjectId, ref: "Department" },
     assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    officialResponse: {
+      message: { type: String, trim: true, maxlength: 2000 },
+      respondedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      respondedAt: Date,
+    },
     aiMeta: {
       summary: String,
       confidence: Number,

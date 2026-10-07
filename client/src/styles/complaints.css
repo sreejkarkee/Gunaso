@@ -97,6 +97,19 @@
   background: #fff4df;
   color: #a56b00;
 }
+.official-response {
+  padding: 12px;
+  border-left: 3px solid #2aa876;
+  background: #effaf4;
+  color: #315e4a !important;
+}
+.official-response strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.detail-response {
+  margin: 24px 0;
+}
 .text-button {
   border: 0;
   background: none;
