@@ -23,3 +23,32 @@ Gunaso is a public grievance portal. Citizens can create accounts, file complain
    - `GET /api/departments`
 
 The initial account role is always `citizen`. An administrator can create departments through `POST /api/departments`, then assign an account the `admin` or `officer` role directly in MongoDB.
+
+## React client
+
+The client is a Vite React application in `client/`.
+
+```powershell
+npm install --prefix .\client
+npm run dev
+```
+
+The root `npm run dev` starts Vite at http://localhost:5173 and proxies `/api` requests to the server at http://localhost:5000. Run the API separately with:
+
+```powershell
+npm run server
+```
+
+For production, build the React client with `npm run build`; the Express server will serve `client/dist`.
+
+### Client structure
+
+```text
+client/src/
+├── api/          # API request helpers
+├── app/          # App shell and route selection
+├── components/   # Shared UI components
+├── constants/    # Shared complaint values
+├── pages/        # Home, auth, dashboard, complaint, and staff pages
+└── styles/       # Global application styles
+```

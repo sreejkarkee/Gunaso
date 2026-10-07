@@ -1,0 +1,5 @@
+import InfoCard from "../components/InfoCard";
+
+export default function HomePage({ user }) {
+  return <><section className="hero"><div><p className="kicker">YOUR VOICE. VISIBLE ACTION.</p><h1>Make your community better, one report at a time.</h1><p>Submit a complaint, reach the right department, and follow its progress from anywhere.</p><a className="button" href={`#${user ? "new" : "register"}`}>{user ? "File a complaint" : "Get started"} <span>→</span></a></div><div className="hero-art"><div className="art-card"><span>●</span><strong>Report tracked</strong><small>Every update stays visible</small></div><div className="art-circle">G</div></div></section><section className="three-up"><InfoCard number="01" title="Report clearly" text="Describe the issue, location, and urgency in a few simple steps." /><InfoCard number="02" title="Reach the right team" text="Your report is routed to the department that can take action." /><InfoCard number="03" title="Stay informed" text="Follow every status update from submission to resolution." /></section></>;
+}
