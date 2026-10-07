@@ -1,0 +1,46 @@
+/* Gunaso responsive styles */
+@media (max-width: 750px) {
+  .navbar {
+    padding: 0 18px;
+  }
+  .navbar nav {
+    gap: 10px;
+  }
+  .navbar nav a:not(.button) {
+    display: none;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 45px;
+    gap: 20px;
+  }
+  .hero-art {
+    height: 240px;
+  }
+  .three-up {
+    grid-template-columns: 1fr;
+  }
+  .hero,
+  .simple-page,
+  .page,
+  .form-page,
+  .detail-page {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .form-row,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-title {
+    align-items: flex-start;
+    gap: 16px;
+    flex-direction: column;
+  }
+  .welcome-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 36px;
+    padding: 24px;
+  }
+}

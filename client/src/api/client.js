@@ -9,8 +9,12 @@ export function createApi(token, onUnauthorized) {
       },
     });
     const body = await response.json().catch(() => ({}));
-    if (response.status === 401) onUnauthorized();
-    if (!response.ok) throw new Error(body.message || "Request failed");
+    if (response.status === 401) {
+      onUnauthorized();
+    }
+    if (!response.ok) {
+      throw new Error(body.message || "Request failed");
+    }
     return body;
   };
 }

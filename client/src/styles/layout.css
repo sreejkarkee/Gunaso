@@ -1,0 +1,30 @@
+/* Gunaso layout styles */
+.navbar {
+  height: 76px;
+  padding: 0 max(24px, calc((100% - 1160px) / 2));
+  background: #fff;
+  border-bottom: 1px solid #e7ecf3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 1.7rem;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+  color: #173b77;
+  text-decoration: none;
+}
+.logo span {
+  color: #f27455;
+}
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.navbar nav a {
+  color: #58677e;
+  text-decoration: none;
+  font-size: 0.92rem;
+}

@@ -1,0 +1,54 @@
+/* Gunaso forms styles */
+.auth-card,
+.form-page {
+  max-width: 560px;
+  margin: 45px auto;
+  padding: 35px;
+  background: #fff;
+  border: 1px solid #e4e9f0;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px #23345e0a;
+}
+.auth-card h2,
+.form-page h2 {
+  font-size: 2rem;
+  color: #173b77;
+  margin: 8px 0;
+}
+.auth-card form,
+.form-page form {
+  display: grid;
+  gap: 4px;
+  margin-top: 24px;
+}
+label {
+  display: grid;
+  gap: 7px;
+  color: #53637a;
+  font-size: 0.87rem;
+  font-weight: 700;
+  margin: 8px 0;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #d7e0ec;
+  border-radius: 7px;
+  padding: 12px;
+  background: #fbfcfe;
+  color: #1d2939;
+  font: inherit;
+}
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+.switch {
+  color: #68778d;
+  font-size: 0.9rem;
+}
+.switch a,
+.text-button {
+  color: #1d5ac7;
+}

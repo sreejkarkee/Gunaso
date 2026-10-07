@@ -1,0 +1,16 @@
+/* Gunaso feedback styles */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #19283e;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px #0003;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

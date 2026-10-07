@@ -1,0 +1,170 @@
+/* Gunaso complaints styles */
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.welcome-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 54px;
+  padding: 32px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #173b77, #1d5ac7);
+  color: #fff;
+}
+.welcome-banner h1 {
+  margin: 8px 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.05em;
+}
+.welcome-banner p:not(.kicker) {
+  max-width: 620px;
+  margin: 0;
+  color: #dceaff;
+  line-height: 1.6;
+}
+.welcome-banner .kicker {
+  color: #ffc1af !important;
+}
+.welcome-banner .button {
+  flex-shrink: 0;
+  background: #fff;
+  color: #173b77;
+}
+.dashboard-count {
+  color: #718096;
+  font-size: 0.9rem;
+}
+.page h2,
+.detail-card h2 {
+  color: #173b77;
+  font-size: 2.2rem;
+  margin: 5px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  gap: 18px;
+}
+.complaint-card,
+.detail-card {
+  background: #fff;
+  border: 1px solid #e5eaf1;
+  border-radius: 12px;
+  padding: 23px;
+}
+.complaint-card h3 {
+  color: #203d78;
+  margin: 17px 0 8px;
+}
+.complaint-card p,
+.detail-card > p {
+  color: #64738a;
+  line-height: 1.6;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #8290a4;
+  font-size: 0.78rem;
+}
+.status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: #eaf1ff;
+  color: #1d5ac7;
+}
+.status-resolved {
+  background: #e7f8ef;
+  color: #168554;
+}
+.status-critical,
+.status-rejected {
+  background: #ffebe9;
+  color: #c44334;
+}
+.status-in_progress {
+  background: #fff4df;
+  color: #a56b00;
+}
+.text-button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  font-weight: 700;
+}
+.form-row,
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.detail-page {
+  max-width: 900px;
+}
+.detail-card {
+  margin-top: 17px;
+  padding: 32px;
+}
+.detail-grid {
+  margin: 30px 0;
+  border-top: 1px solid #e7ecf3;
+  border-bottom: 1px solid #e7ecf3;
+  padding: 20px 0;
+  color: #78869a;
+  gap: 20px;
+}
+.detail-grid strong {
+  display: block;
+  color: #173b77;
+  margin-top: 6px;
+  text-transform: capitalize;
+}
+.timeline {
+  border-left: 2px solid #d9e5fa;
+  padding-left: 20px;
+}
+.timeline-item {
+  margin: 0 0 22px;
+}
+.timeline-item p {
+  color: #7b8798;
+  font-size: 0.82rem;
+}
+.timeline-item span {
+  color: #4d5d73;
+}
+.empty {
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #ccd7e5;
+  border-radius: 12px;
+  padding: 55px;
+  color: #6b7890;
+}
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #dbe7fa;
+  border-top-color: #1d5ac7;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.error {
+  color: #be3d31;
+}
