@@ -10,7 +10,10 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  box-shadow: 0 8px 18px #1d5ac72b;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.button:hover { transform: translateY(-2px); box-shadow: 0 12px 24px #1d5ac73b; }
 .button:disabled {
   opacity: 0.55;
   cursor: wait;

@@ -18,6 +18,7 @@ const servedClientPath = fs.existsSync(clientDistPath) ? clientDistPath : client
 app.use(helmet());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json({ limit: "1mb" }));
+app.use("/uploads", express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), "uploads")));
 if (process.env.NODE_ENV !== "production") app.use(morgan("dev"));
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));

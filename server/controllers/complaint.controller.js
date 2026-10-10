@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import fs from "fs";
 import { z } from "zod";
 import Complaint from "../models/Complaint.js";
 import Department from "../models/Department.js";
@@ -58,17 +59,44 @@ export const getComplaint = asyncHandler(async (req, res) => {
 });
 
 export const createComplaint = asyncHandler(async (req, res) => {
-  const data = createSchema.parse(req.body);
-  const department = await Department.findOne({ categories: data.category });
-  const complaint = await Complaint.create({
-    ...data,
-    ticketId: ticketId(),
-    citizen: req.user._id,
-    department: department?._id,
-    dueAt: department ? new Date(Date.now() + department.slaHours * 60 * 60 * 1000) : undefined,
-  });
-  await StatusHistory.create({ complaint: complaint._id, to: complaint.status, changedBy: req.user._id });
-  res.status(201).json({ complaint });
+  try {
+    let payload = req.body;
+    if (req.body.payload) {
+      try {
+        payload = JSON.parse(req.body.payload);
+      } catch {
+        throw new ApiError(400, "Complaint payload must be valid JSON");
+      }
+    }
+    const data = createSchema.parse({
+      ...payload,
+      attachments: req.files?.map((file) => `/uploads/complaints/${file.filename}`) || payload.attachments,
+    });
+    const department = await Department.findOne({ categories: data.category });
+    let complaint;
+    complaint = await Complaint.create({
+      ...data,
+      location: {
+        type: "Point",
+        ...data.location,
+      },
+      ticketId: ticketId(),
+      citizen: req.user._id,
+      department: department?._id,
+      dueAt: department ? new Date(Date.now() + department.slaHours * 60 * 60 * 1000) : undefined,
+    });
+    await StatusHistory.create({ complaint: complaint._id, to: complaint.status, changedBy: req.user._id });
+    res.status(201).json({ complaint });
+  } catch (error) {
+    req.files?.forEach((file) => {
+      try {
+        fs.unlinkSync(file.path);
+      } catch {
+        // The original validation or database error is more useful to the client.
+      }
+    });
+    throw error;
+  }
 });
 
 export const updateStatus = asyncHandler(async (req, res) => {

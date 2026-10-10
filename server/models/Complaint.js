@@ -21,7 +21,10 @@ const complaintSchema = new mongoose.Schema(
       coordinates: { type: [Number], required: true }, // [longitude, latitude]
       address: String,
     },
-    attachments: [String],
+    attachments: {
+      type: [String],
+      default: [],
+    },
     citizen: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     department: { type: mongoose.Schema.Types.ObjectId, ref: "Department" },
     assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

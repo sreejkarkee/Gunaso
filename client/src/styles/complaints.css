@@ -54,9 +54,17 @@
 .detail-card {
   background: #fff;
   border: 1px solid #e5eaf1;
-  border-radius: 12px;
+  border-radius: 17px;
   padding: 23px;
+  box-shadow: 0 12px 28px #23345e08;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.complaint-card:hover { transform: translateY(-4px); box-shadow: 0 18px 34px #23345e14; }
+.detail-images { margin: 28px 0; }
+.detail-images h3 { color: #173b77; margin-bottom: 12px; }
+.image-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.image-grid img { height: 150px; transition: transform .2s ease; }
+.image-grid a:hover img { transform: scale(1.03); }
 .complaint-card h3 {
   color: #203d78;
   margin: 17px 0 8px;

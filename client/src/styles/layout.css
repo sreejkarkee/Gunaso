@@ -1,9 +1,13 @@
 /* Gunaso layout styles */
 .navbar {
-  height: 76px;
+  height: 82px;
   padding: 0 max(24px, calc((100% - 1160px) / 2));
-  background: #fff;
-  border-bottom: 1px solid #e7ecf3;
+  background: #ffffffdd;
+  border-bottom: 1px solid #e0e8f3;
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,3 +32,5 @@
   text-decoration: none;
   font-size: 0.92rem;
 }
+.navbar nav a { transition: color .2s ease; }
+.navbar nav a:hover { color: #ed704f; }

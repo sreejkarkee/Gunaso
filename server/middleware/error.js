@@ -3,6 +3,12 @@ export const notFound = (req, res) => {
 };
 
 export const errorHandler = (err, req, res, next) => {
+  if (err.code === "LIMIT_FILE_SIZE") {
+    return res.status(400).json({ message: "Each image must be 5 MB or smaller" });
+  }
+  if (err.code === "LIMIT_FILE_COUNT") {
+    return res.status(400).json({ message: "You can upload up to 5 images" });
+  }
   if (err.name === "ZodError") {
     return res.status(400).json({
       message: "Validation failed",
