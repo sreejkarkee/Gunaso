@@ -63,3 +63,24 @@ textarea {
 .text-button {
   color: #1d5ac7;
 }
+html[data-theme="dark"] .auth-card,
+html[data-theme="dark"] .form-page,
+html[data-theme="dark"] .complaint-card,
+html[data-theme="dark"] .detail-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .art-card {
+  background: #182438;
+  border-color: #2d3d57;
+  box-shadow: 0 20px 55px #00000026;
+}
+html[data-theme="dark"] label { color: #aebbd0; }
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  background: #111b2b;
+  color: #e7edf7;
+  border-color: #354762;
+}
+html[data-theme="dark"] .upload-box { background: #142237; border-color: #3e5575; }
+html[data-theme="dark"] .upload-box span,
+html[data-theme="dark"] .switch { color: #9babc1; }

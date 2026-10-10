@@ -107,3 +107,10 @@
 .simple-page .three-up {
   padding: 35px 0 0;
 }
+html[data-theme="dark"] .hero h1,
+html[data-theme="dark"] .simple-page h1 { color: #e2edff; }
+html[data-theme="dark"] .hero p,
+html[data-theme="dark"] .simple-page > p:not(.kicker),
+html[data-theme="dark"] .info-card p,
+html[data-theme="dark"] .art-card small { color: #aab9ce; }
+html[data-theme="dark"] .hero-art { background: #203553; }

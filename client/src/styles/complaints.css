@@ -189,3 +189,12 @@
 .error {
   color: #be3d31;
 }
+html[data-theme="dark"] .complaint-card p,
+html[data-theme="dark"] .detail-card > p,
+html[data-theme="dark"] .dashboard-count,
+html[data-theme="dark"] .detail-grid,
+html[data-theme="dark"] .timeline-item p,
+html[data-theme="dark"] .timeline-item span { color: #aab9ce; }
+html[data-theme="dark"] .detail-grid { border-color: #2d3d57; }
+html[data-theme="dark"] .timeline { border-color: #3e5575; }
+html[data-theme="dark"] .empty { background: #182438; border-color: #3a4c6a; color: #aab9ce; }

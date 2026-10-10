@@ -5,6 +5,8 @@
   }
   .navbar nav {
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .navbar nav a:not(.button) {
     display: none;
