@@ -1,7 +1,9 @@
 export function createApi(token, onUnauthorized) {
+  const apiBase = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+
   return async function request(path, options = {}) {
     const isFormData = options.body instanceof FormData;
-    const response = await fetch(`/api${path}`, {
+    const response = await fetch(`${apiBase}${path}`, {
       ...options,
       headers: {
         ...(isFormData ? {} : { "Content-Type": "application/json" }),

@@ -41,6 +41,37 @@ npm run server
 
 For production, build the React client with `npm run build`; the Express server will serve `client/dist`.
 
+## Deploy to Render and Vercel
+
+This project can be deployed as two services:
+
+1. **Create a MongoDB Atlas database.** Add a database user and allow the deployed
+   Render service to connect. For a quick setup, use `0.0.0.0/0` in Atlas Network
+   Access; restrict it to Render's outbound IPs if your plan supports that.
+2. **Deploy the API to Render.** Create a Web Service from this repository:
+   - Root Directory: `server`
+   - Runtime: `Node`
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+   - Add `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN=7d`, and `NODE_ENV=production`.
+     Render supplies `PORT` automatically.
+   - Temporarily set `CLIENT_URL` to the eventual Vercel URL, or update it after
+     the frontend deployment. The API health check is `/api/health`.
+3. **Deploy the frontend to Vercel.** Import the same repository:
+   - Root Directory: `client`
+   - Framework Preset: `Vite`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Add `VITE_API_URL=https://<your-render-service>.onrender.com/api`.
+4. **Update CORS.** Copy the Vercel production URL into the Render
+   `CLIENT_URL` environment variable and redeploy the Render service.
+5. Test the Vercel URL by registering, logging in, and calling
+   `https://<your-render-service>.onrender.com/api/health`.
+
+Do not commit either `.env` file. Render's local filesystem is ephemeral, so
+uploaded complaint images stored in `server/uploads` can disappear after a
+restart or redeploy; use object storage for persistent uploads in production.
+
 ### Client structure
 
 ```text
