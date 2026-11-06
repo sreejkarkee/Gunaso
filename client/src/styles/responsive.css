@@ -53,4 +53,22 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
+  .user-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .user-row .danger-button {
+    width: 100%;
+  }
+  .complaint-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .complaint-actions .button,
+  .complaint-actions .danger-button,
+  .complaint-actions .text-button {
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+  }
 }
