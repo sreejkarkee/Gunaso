@@ -45,4 +45,12 @@
     margin-bottom: 36px;
     padding: 24px;
   }
+  .feed-card-heading {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feed-details {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }

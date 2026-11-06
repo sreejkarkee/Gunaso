@@ -45,6 +45,15 @@ export const listComplaints = asyncHandler(async (req, res) => {
   res.json({ complaints });
 });
 
+export const listPublicComplaints = asyncHandler(async (req, res) => {
+  const complaints = await Complaint.find({})
+    .sort({ createdAt: -1 })
+    .populate("citizen", "name")
+    .populate("department", "name")
+    .select("ticketId title description category urgency status location citizen department createdAt");
+  res.json({ complaints });
+});
+
 export const getComplaint = asyncHandler(async (req, res) => {
   const complaint = await Complaint.findById(req.params.id)
     .populate("citizen", "name email")
@@ -123,4 +132,15 @@ export const addOfficialResponse = asyncHandler(async (req, res) => {
   };
   await complaint.save();
   res.json({ complaint });
+});
+
+export const deleteComplaint = asyncHandler(async (req, res) => {
+  const complaint = await Complaint.findById(req.params.id);
+  if (!complaint) throw new ApiError(404, "Complaint not found");
+
+  await Promise.all([
+    Complaint.deleteOne({ _id: complaint._id }),
+    StatusHistory.deleteMany({ complaint: complaint._id }),
+  ]);
+  res.json({ message: "Complaint deleted" });
 });

@@ -6,6 +6,7 @@ import AuthPage from "../pages/AuthPage";
 import ComplaintDetailPage from "../pages/ComplaintDetailPage";
 import ComplaintFormPage from "../pages/ComplaintFormPage";
 import DashboardPage from "../pages/DashboardPage";
+import FeedPage from "../pages/FeedPage";
 import HomePage from "../pages/HomePage";
 import ManagePage from "../pages/ManagePage";
 
@@ -52,6 +53,7 @@ export default function App() {
   const protectedPage = !user && ["dashboard", "new", "manage"].includes(page);
   let content;
   if (page === "about") content = <AboutPage />;
+  else if (page === "feed") content = <FeedPage api={api} />;
   else if (page === "login" || page === "register" || protectedPage)
     content = (
       <AuthPage
@@ -69,7 +71,7 @@ export default function App() {
     user &&
     ["officer", "admin"].includes(user.role)
   )
-    content = <ManagePage api={api} notify={setToast} />;
+    content = <ManagePage api={api} notify={setToast} user={user} />;
   else if (page.startsWith("complaint/") && user)
     content = <ComplaintDetailPage api={api} id={page.split("/")[1]} />;
   else content = <HomePage user={user} />;

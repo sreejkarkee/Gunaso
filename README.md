@@ -16,6 +16,7 @@ Gunaso is a public grievance portal. Citizens can create accounts, file complain
 4. Open http://localhost:5000. The API serves the client and exposes:
 
    - `GET /api/health`
+   - `GET /api/complaints/feed` (public community complaint feed)
    - `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`
    - `GET/POST /api/complaints`
    - `GET /api/complaints/:id`

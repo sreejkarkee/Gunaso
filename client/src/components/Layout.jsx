@@ -14,6 +14,7 @@ export default function Layout({ user, onLogout, children }) {
           <span aria-hidden="true">{theme === "light" ? "☾" : "☀"}</span>
           {theme === "light" ? "Dark mode" : "Light mode"}
         </button>
+        <a href="#feed">Community feed</a>
         {user ? <>
           <a href="#dashboard">Dashboard</a><a href="#new">File complaint</a>
           {["officer", "admin"].includes(user.role) && <a href="#manage">Manage</a>}

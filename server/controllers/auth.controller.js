@@ -1,6 +1,8 @@
 import { z } from "zod";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import Complaint from "../models/Complaint.js";
+import StatusHistory from "../models/StatusHistory.js";
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
@@ -39,4 +41,27 @@ export const login = asyncHandler(async (req, res) => {
 
 export const me = asyncHandler(async (req, res) => {
   res.json({ user: publicUser(req.user) });
+});
+
+export const listUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().select("name email role department createdAt").sort({ createdAt: -1 });
+  res.json({ users });
+});
+
+export const deleteUser = asyncHandler(async (req, res) => {
+  if (req.params.id === req.user._id.toString()) {
+    throw new ApiError(400, "You cannot delete your own admin account");
+  }
+
+  const user = await User.findById(req.params.id);
+  if (!user) throw new ApiError(404, "User not found");
+
+  const complaints = await Complaint.find({ citizen: user._id }).select("_id");
+  const complaintIds = complaints.map((complaint) => complaint._id);
+  await Promise.all([
+    Complaint.deleteMany({ citizen: user._id }),
+    StatusHistory.deleteMany({ complaint: { $in: complaintIds } }),
+    User.deleteOne({ _id: user._id }),
+  ]);
+  res.json({ message: "User and their complaints deleted" });
 });
