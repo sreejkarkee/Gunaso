@@ -71,4 +71,8 @@
     text-align: center;
     width: 100%;
   }
+  .image-url-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }

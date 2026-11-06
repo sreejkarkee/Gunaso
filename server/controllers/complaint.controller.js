@@ -18,7 +18,10 @@ const createSchema = z.object({
     coordinates: z.array(z.number()).length(2),
     address: z.string().trim().max(300).optional(),
   }),
-  attachments: z.array(z.string().url()).max(5).default([]),
+  attachments: z.array(z.union([
+    z.string().url(),
+    z.string().startsWith("/uploads/"),
+  ])).max(5).default([]),
 });
 const statusSchema = z.object({
   status: z.enum(statuses),
@@ -79,7 +82,10 @@ export const createComplaint = asyncHandler(async (req, res) => {
     }
     const data = createSchema.parse({
       ...payload,
-      attachments: req.files?.map((file) => `/uploads/complaints/${file.filename}`) || payload.attachments,
+      attachments: [
+        ...(req.files?.map((file) => `/uploads/complaints/${file.filename}`) || []),
+        ...(payload.attachments || []),
+      ],
     });
     const department = await Department.findOne({ categories: data.category });
     let complaint;

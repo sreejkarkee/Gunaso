@@ -49,6 +49,56 @@ input:focus, textarea:focus, select:focus { outline: 0; border-color: #1d5ac7; b
 .upload-box span { color: #76869c; font-size: .82rem; font-weight: 400; }
 .upload-button { display: inline-block; color: #1d5ac7; cursor: pointer; margin: 14px 0 0; }
 .upload-button input { display: none; }
+.image-url-row {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.image-url-row input { min-width: 0; }
+.secondary-button {
+  background: #edf3ff;
+  border: 1px solid #cbdaf2;
+  border-radius: 9px;
+  color: #1d5ac7;
+  cursor: pointer;
+  font-weight: 750;
+  padding: 11px 14px;
+  white-space: nowrap;
+}
+.secondary-button:hover { background: #e2edff; }
+.attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+.attachment-item {
+  height: 92px;
+  position: relative;
+  width: 92px;
+}
+.attachment-item img {
+  border: 1px solid #dce5f1;
+  border-radius: 10px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.attachment-item button {
+  background: #fff;
+  border: 1px solid #dce5f1;
+  border-radius: 50%;
+  color: #bf4a38;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 24px;
+  line-height: 1;
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  width: 24px;
+}
 .image-previews, .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 10px; margin-top: 15px; }
 .image-previews img, .image-grid img { width: 100%; height: 92px; object-fit: cover; border-radius: 10px; border: 1px solid #dce5f1; }
 textarea {
@@ -82,5 +132,8 @@ html[data-theme="dark"] select {
   border-color: #354762;
 }
 html[data-theme="dark"] .upload-box { background: #142237; border-color: #3e5575; }
+html[data-theme="dark"] .secondary-button { background: #202f48; border-color: #3a5278; color: #c9dcff; }
+html[data-theme="dark"] .attachment-item img,
+html[data-theme="dark"] .attachment-item button { border-color: #3a4c6a; }
 html[data-theme="dark"] .upload-box span,
 html[data-theme="dark"] .switch { color: #9babc1; }
